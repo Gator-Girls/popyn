@@ -29,7 +29,7 @@
 
         <q-item to="/profile" v-ripple clickable exact>
           <q-item-section avatar>
-            <q-icon name="help" size="md" />
+            <q-icon name="account_circle" size="md" />
           </q-item-section>
           <q-item-section class="text-h6 text-weight-bold"
             >Profile</q-item-section
@@ -38,7 +38,7 @@
 
         <q-item to="/search" v-ripple clickable exact>
           <q-item-section avatar>
-            <q-icon name="help" size="md" />
+            <q-icon name="search" size="md" />
           </q-item-section>
           <q-item-section class="text-h6 text-weight-bold"
             >Search</q-item-section
