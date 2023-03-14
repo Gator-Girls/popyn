@@ -14,12 +14,19 @@
         blanditiis, perspiciatis dolor quisquam labore fuga repellendus minima!
         Maxime, provident est.
       </p>
+      <MapSetup></MapSetup>
     </div>
   </q-page>
 </template>
 
 <script>
-export default {
+import MapSetup from "./MapSetup.vue";
+import { defineComponent } from "vue";
+
+export default defineComponent({
   name: "SearchPage",
-};
+  components: {
+    MapSetup,
+  },
+});
 </script>

@@ -1,3 +1,11 @@
+import Vue from "vue";
+import * as VueGoogleMaps from "vue2-google-maps";
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: "AIzaSyBX343Nmh74V7B37a98q1pbtkqYfVt77XI",
+  },
+});
+
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
@@ -13,7 +21,11 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+const Firestore = firebase.firestore;
+export const db = Firebase();
 
-let db = firebase.firestore();
+Vue.config.productionTip = false;
 
-export default db;
+new Vue({
+  render: (h) => h(App),
+}).$mount("#app");
