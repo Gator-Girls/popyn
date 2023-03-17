@@ -23,8 +23,8 @@
         </div>
         <div class="col col-shrink">
           <q-btn
-            @click="addNewQweet"
-            :disable="!newQweetContent"
+            @click="addNewReview"
+            :disable="!newReviewContent"
             class="q-mb-lg"
             color="primary"
             label="Qweet"
@@ -43,27 +43,26 @@
           enter-active-class="animated fadeIn slow"
           leave-active-class="animated fadeOut slow"
         >
-          <q-item v-for="qweet in qweets" :key="qweet.id" class="qweet q-py-md">
-            <q-item-section avatar top>
-              <q-avatar size="xl">
-                <img
-                  src="https://s.gravatar.com/avatar/ce7f3697e231df38b3ca6065848520da?s=80"
-                />
-              </q-avatar>
-            </q-item-section>
-
+          <q-item
+            v-for="review in reviews"
+            :key="review.id"
+            class="review q-py-md"
+          >
             <q-item-section>
               <q-item-label class="text-subtitle1">
                 <strong>Danny Connell</strong>
                 <span class="text-grey-7">
                   @danny__connell
-                  <br class="lt-md" />&bull; {{ 7777777 }}
+                  <br class="lt-md" />&bull; {{ review.date }}
                 </span>
               </q-item-label>
-              <q-item-label class="qweet-content text-body1">{{
-                qweet.content
+              <q-item-label class="review-content text-body1">{{
+                review.content
               }}</q-item-label>
-              <div class="qweet-icons row justify-between q-mt-sm">
+              <q-item-label class="review-content text-body2">{{
+                review.author
+              }}</q-item-label>
+              <div class="review-icons row justify-between q-mt-sm">
                 <q-btn
                   color="grey"
                   icon="far fa-comment"
@@ -98,31 +97,27 @@
 <script>
 import db from "src/boot/firebase";
 import { collection, query, where, onSnapshot } from "firebase/firestore";
+import { addDoc } from "firebase/firestore";
 
 export default {
   name: "SearchPage",
   data() {
     return {
-      newQweetContent: "",
-      qweets: [],
+      newReviewContent: "",
+      authorName: "",
+      location: "",
+      reviews: [],
     };
   },
   methods: {
-    addNewQweet() {
-      let newQweet = {
-        content: this.newQweetContent,
+    addNewReview() {
+      const docRef = addDoc(collection(db, "reviews"), {
+        content: this.newReviewContent,
+        author: this.authorName,
+        locationID: this.location,
         date: Date.now(),
-        liked: false,
-      };
-      db.collection("qweets")
-        .add(newQweet)
-        .then(function (docRef) {
-          console.log("Document written with ID: ", docRef.id);
-        })
-        .catch(function (error) {
-          console.error("Error adding document: ", error);
-        });
-      this.newQweetContent = "";
+      });
+      console.log("Document written with ID: ", docRef.id);
     },
     deleteQweet(qweet) {
       db.collection("qweets")
@@ -135,20 +130,6 @@ export default {
           console.error("Error removing document: ", error);
         });
     },
-    toggleLiked(qweet) {
-      db.collection("qweets")
-        .doc(qweet.id)
-        .update({
-          liked: !qweet.liked,
-        })
-        .then(function () {
-          console.log("Document successfully updated!");
-        })
-        .catch(function (error) {
-          // The document probably doesn't exist.
-          console.error("Error updating document: ", error);
-        });
-    },
   },
   filters: {
     relativeDate(value) {
@@ -156,28 +137,28 @@ export default {
     },
   },
   mounted() {
-    const q = query(collection(db, "qweets"));
+    const q = query(collection(db, "reviews"));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       snapshot.docChanges().forEach((change) => {
-        let qweetChange = change.doc.data();
-        qweetChange.id = change.doc.id;
+        let reviewChange = change.doc.data();
+        reviewChange.id = change.doc.id;
         if (change.type === "added") {
-          console.log("New qweet: ", change.doc.data());
-          this.qweets.unshift(qweetChange);
+          console.log("New review: ", change.doc.data());
+          this.reviews.unshift(reviewChange);
         }
         if (change.type === "modified") {
-          console.log("Modified qweet: ", qweetChange);
-          let index = this.qweets.findIndex(
-            (qweet) => qweet.id === qweetChange.id
+          console.log("Modified qweet: ", reviewChange);
+          let index = this.reviews.findIndex(
+            (review) => review.id === reviewChange.id
           );
-          Object.assign(this.qweets[index], qweetChange);
+          Object.assign(this.reviews[index], reviewChange);
         }
         if (change.type === "removed") {
-          console.log("Removed qweet: ", qweetChange);
-          let index = this.qweets.findIndex(
-            (qweet) => qweet.id === qweetChange.id
+          console.log("Removed qweet: ", reviewChange);
+          let index = this.reviews.findIndex(
+            (review) => review.id === reviewChange.id
           );
-          this.qweets.splice(index, 1);
+          this.reviews.splice(index, 1);
         }
       });
     });
