@@ -2,10 +2,15 @@
   <q-layout view="lHr lpR fFf">
     <q-header bordered class="bg-primary text-black">
       <q-toolbar>
-        <q-btn dense flat round icon="menu" @click="left = !left" />
-
+        <!-- <q-btn dense flat round icon="menu" @click="left = !left" /> -->
+        <img
+          alt="Popyn logo"
+          src="~assets/Popyn_-logos_transparent.ico"
+          style="width: 88px; height: 88px"
+        />
         <q-toolbar-title class="text-weight-bold">
-          <span class="gt-sm">{{ $route.name }}</span>
+          <!-- {{ $route.name }} IF WE WANT CURRENT PAGE NAME IN HEADER-->
+          <span class="gt-sm">{{ "What's Popyn!" }}</span>
           <q-icon
             class="header-icon q-pa-md lt-md"
             name="fas fa-dove"
@@ -16,7 +21,7 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="left" side="left" :width="283" bordered show-if-above>
+    <!-- <q-drawer v-model="left" side="left" :width="283" bordered show-if-above>
       <q-icon class="q-pa-md" name="fas fa-dove" size="lg" color="primary" />
 
       <q-list>
@@ -45,9 +50,9 @@
           >
         </q-item>
       </q-list>
-    </q-drawer>
+    </q-drawer> -->
 
-    <q-drawer show-if-above v-model="right" side="right" bordered>
+    <!-- <q-drawer show-if-above v-model="right" side="right" bordered>
       <q-input
         placeholder="Whats Popyn?"
         class="q-ma-md"
@@ -78,13 +83,21 @@
           </q-item-section>
         </q-item>
       </q-list>
-    </q-drawer>
+    </q-drawer> -->
 
     <q-page-container>
       <keep-alive>
         <router-view />
       </keep-alive>
     </q-page-container>
+
+    <q-footer bordered class="bg-primary text-black">
+      <q-tabs>
+        <q-route-tab to="/Home" label="Home" icon="home" />
+        <q-route-tab to="/search" label="Search" icon="search" />
+        <q-route-tab to="/profile" label="Profile" icon="person" />
+      </q-tabs>
+    </q-footer>
   </q-layout>
 </template>
 

@@ -5,8 +5,13 @@ const routes = [
     children: [
       {
         path: "/home",
-        component: () => import("src/pages/Home.vue"),
+        component: () => import("src/pages/Trending.vue"),
         name: "Home",
+      },
+      {
+        path: "/nearby",
+        component: () => import("src/pages/Nearby.vue"),
+        name: "Nearby",
       },
       {
         path: "/profile",
