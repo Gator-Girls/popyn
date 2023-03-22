@@ -22,6 +22,7 @@
       color="primary"
       text-color="black"
       label="Log out"
+      to="/Login"
     ></q-btn>
   </q-page>
 </template>
