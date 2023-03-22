@@ -176,9 +176,11 @@ export default {
       // review.upvotes = tempVote;
       // console.log("Total Upvotes: ", tempVote);
     },
-    downvoteReview(review) {
-      let tempVote = review.upvotes - 1;
-      db.collection("reviews").doc(doc.id).update({ upvotes: tempVote });
+    async downvoteReview(review) {
+      const docRef = doc(db, "reviews", review.id);
+      await updateDoc(docRef, {
+        upvotes: increment(-1),
+      });
       // review.upvotes = tempVote;
       // console.log("Total Downvotes: ", tempVote);
     },
