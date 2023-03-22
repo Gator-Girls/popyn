@@ -1,12 +1,14 @@
 <template>
-  <LocationReviews :locID="locationID" />
-  <!-- <q-page class="relative-position">
+  <div>
+    <h1>{{ locID }}</h1>
+  </div>
+  <q-page class="relative-position">
     <q-scroll-area class="absolute full-width full-height">
       <div class="q-py-lg q-px-md row items-end q-col-gutter-md">
         <div class="col">
           <q-input
             v-model="newReviewContent"
-            class="new-review"
+            class="new-qweet"
             placeholder="What's happening?"
             maxlength="280"
             bottom-slots
@@ -25,9 +27,10 @@
         <div class="col col-shrink">
           <q-btn
             @click="addNewReview"
+            :disable="!newReviewContent"
             class="q-mb-lg"
             color="primary"
-            label="Qweet"
+            label="Review"
             rounded
             unelevated
             no-caps
@@ -46,7 +49,6 @@
           <q-item
             v-for="review in reviews"
             :key="review.id"
-            :review="review"
             class="review q-py-md"
           >
             <q-item-section>
@@ -61,8 +63,9 @@
                 review.content
               }}</q-item-label>
               <q-item-label class="review-content text-body2">{{
-                review.author
+                review.locationID
               }}</q-item-label>
+
               <div class="review-icons row justify-between q-mt-sm">
                 <q-btn
                   color="grey"
@@ -79,7 +82,7 @@
                   round
                 />
                 <q-btn
-                  @click="deleteQweet(qweet)"
+                  @click="deleteReview(review)"
                   color="grey"
                   icon="fas fa-trash"
                   size="sm"
@@ -92,38 +95,49 @@
         </transition-group>
       </q-list>
     </q-scroll-area>
-  </q-page> -->
+  </q-page>
 </template>
 
 <script>
+//display the individual bar
+//display the list of reviews that responds to the bar's unique
+//location ID, in order of newest to oldest
 import db from "src/boot/firebase";
 import { collection, query, where, onSnapshot } from "firebase/firestore";
 import { addDoc } from "firebase/firestore";
 import PageAbout from "./Profile.vue";
-import LocationReviews from "./SelectedLocReviews.vue";
+import SearchPage from "./SearchPage.vue";
 
 export default {
-  name: "SearchPage",
-  components: {
-    LocationReviews,
+  name: "LocationReviews",
+  props: {
+    locID: String,
   },
   data() {
     return {
       newReviewContent: "",
       authorName: "",
-      locationID: "Grog32603",
+      locationID: "",
       commentIDs: [],
+      passingVal: "the passing value",
       reviews: [
         // {
         //   content: "hard code 1",
         //   author: "dani",
         //   locationID: "Midtown",
         //   date: "today 1",
+        //   passingVal: "testing passing",
         // },
         // {
         //   content: "hard code 2",
         //   author: "dani",
         //   locationID: "Midtown",
+        //   date: "today 2",
+        // },
+        // {
+        //   content: "hard code 3",
+        //   author: "dani",
+        //   locationID: "Not Midtown",
         //   date: "today 2",
         // },
       ],
@@ -162,7 +176,10 @@ export default {
     },
   },
   mounted() {
-    const q = query(collection(db, "reviews"));
+    const q = query(
+      collection(db, "reviews"),
+      where("locationID", "==", this.locID)
+    );
     const unsubscribe = onSnapshot(q, (snapshot) => {
       snapshot.docChanges().forEach((change) => {
         let reviewChange = change.doc.data();
