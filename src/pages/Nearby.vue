@@ -2,8 +2,8 @@
   <q-page>
     <div>
       <q-tabs>
-        <q-route-tab to="/Home" label="Trending" />
-        <q-route-tab to="/Nearby" label="Nearby" />
+        <q-route-tab to="/home" label="Trending" />
+        <q-route-tab to="/nearby" label="Nearby" />
       </q-tabs>
     </div>
   </q-page>

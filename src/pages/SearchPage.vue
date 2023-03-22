@@ -1,20 +1,19 @@
 <template>
   <q-page class="q-pa-lg">
-    <h4 class="q-mt-none q-mb-md text-weight-bold">About Qwitter</h4>
     <div class="text-body1">
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt similique
-        molestias dolore, ab libero eius? Voluptatum quaerat architecto ex
-        blanditiis, perspiciatis dolor quisquam labore fuga repellendus minima!
-        Maxime, provident est.
-      </p>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt similique
-        molestias dolore, ab libero eius? Voluptatum quaerat architecto ex
-        blanditiis, perspiciatis dolor quisquam labore fuga repellendus minima!
-        Maxime, provident est.
-      </p>
+      <q-input
+        placeholder="Whats Popyn?"
+        class="q-ma-md"
+        outlined
+        rounded
+        dense
+      >
+        <template v-slot:prepend>
+          <q-icon name="search" />
+        </template>
+      </q-input>
     </div>
+    <!-- <h5 class="q-mt-none q-mb-md text-weight-bold">Results</h5> -->
   </q-page>
 </template>
 

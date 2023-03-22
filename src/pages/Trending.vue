@@ -2,8 +2,8 @@
   <q-page>
     <div>
       <q-tabs>
-        <q-route-tab to="/Home" label="Trending" />
-        <q-route-tab to="/Nearby" label="Nearby" />
+        <q-route-tab to="/home" label="Trending" />
+        <q-route-tab to="/nearby" label="Nearby" />
       </q-tabs>
     </div>
 
@@ -12,6 +12,7 @@
       src="~assets/Popyn_-logos_transparent.ico"
       style="width: 300px; height: 300px"
     /> -->
+    <q-btn round class="float-right" color="primary" icon="add"></q-btn>
   </q-page>
 </template>
 

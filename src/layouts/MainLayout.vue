@@ -10,13 +10,13 @@
         />
         <q-toolbar-title class="text-weight-bold">
           <!-- {{ $route.name }} IF WE WANT CURRENT PAGE NAME IN HEADER-->
-          <span class="gt-sm">{{ "What's Popyn!" }}</span>
-          <q-icon
+          <span>{{ "What's Popyn!" }}</span>
+          <!-- <q-icon
             class="header-icon q-pa-md lt-md"
             name="fas fa-dove"
             size="sm"
             color="primary"
-          />
+          /> -->
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
@@ -93,7 +93,7 @@
 
     <q-footer bordered class="bg-primary text-black">
       <q-tabs>
-        <q-route-tab to="/Home" label="Home" icon="home" />
+        <q-route-tab to="/home" label="Home" icon="home" />
         <q-route-tab to="/search" label="Search" icon="search" />
         <q-route-tab to="/profile" label="Profile" icon="person" />
       </q-tabs>

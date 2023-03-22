@@ -1,25 +1,33 @@
 <template>
   <q-page class="q-pa-lg">
-    <h4 class="q-mt-none q-mb-md text-weight-bold">About Qwitter</h4>
-    <div class="text-body1">
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt similique
-        molestias dolore, ab libero eius? Voluptatum quaerat architecto ex
-        blanditiis, perspiciatis dolor quisquam labore fuga repellendus minima!
-        Maxime, provident est.
-      </p>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt similique
-        molestias dolore, ab libero eius? Voluptatum quaerat architecto ex
-        blanditiis, perspiciatis dolor quisquam labore fuga repellendus minima!
-        Maxime, provident est.
-      </p>
+    <div class="q-pa-md q-gutter-y-md bg-primary">
+      <q-avatar size="100px" color="bg-primary">AB</q-avatar>
+      <span STYLE="font-size:200%"> Anita Bath</span>
     </div>
+    <div class="text-body1">
+      <q-list>
+        <q-item clickable v-ripple>
+          <q-item-section> My Pops </q-item-section>
+        </q-item>
+
+        <q-item clickable v-ripple>
+          <q-item-section> My Comments </q-item-section>
+        </q-item>
+      </q-list>
+    </div>
+
+    <q-btn
+      rounded
+      class="absolute-center"
+      color="primary"
+      text-color="black"
+      label="Log out"
+    ></q-btn>
   </q-page>
 </template>
 
 <script>
 export default {
-  name: "PageAbout",
+  name: "PageProfile",
 };
 </script>
