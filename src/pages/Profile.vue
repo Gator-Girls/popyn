@@ -16,14 +16,16 @@
       </q-list>
     </div>
 
-    <q-btn
-      rounded
-      class="absolute-center"
-      color="primary"
-      text-color="black"
-      label="Log out"
-      to="/Login"
-    ></q-btn>
+    <div class="row justify-center">
+      <q-btn
+        rounded
+        class="q-mt-md"
+        color="primary"
+        text-color="black"
+        label="Log out"
+        to="/Login"
+      ></q-btn>
+    </div>
   </q-page>
 </template>
 
