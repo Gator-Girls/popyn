@@ -6,11 +6,11 @@
     </div>
     <div class="text-body1">
       <q-list>
-        <q-item clickable v-ripple>
+        <q-item clickable v-ripple to="/MyPops">
           <q-item-section> My Pops </q-item-section>
         </q-item>
 
-        <q-item clickable v-ripple>
+        <q-item clickable v-ripple to="/MyComments">
           <q-item-section> My Comments </q-item-section>
         </q-item>
       </q-list>

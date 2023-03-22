@@ -33,6 +33,21 @@ const routes = [
         component: () => import("src/pages/Signup.vue"),
         name: "Signup",
       },
+      {
+        path: "/mypops",
+        component: () => import("src/pages/MyPops.vue"),
+        name: "MyPops",
+      },
+      {
+        path: "/mycomments",
+        component: () => import("src/pages/MyComments.vue"),
+        name: "MyComments",
+      },
+      {
+        path: "/createpop",
+        component: () => import("src/pages/CreatePop.vue"),
+        name: "CreatePop",
+      },
     ],
   },
 
