@@ -87,6 +87,17 @@
                   no-caps
                 />
               </div>
+              <div class="col col-shrink">
+                <q-btn
+                  @click="deleteReview(review)"
+                  class="q-mb-lg"
+                  color="primary"
+                  label="Delete"
+                  rounded
+                  unelevated
+                  no-caps
+                />
+              </div>
             </q-item-section>
           </q-item>
         </transition-group>
@@ -109,6 +120,7 @@ import {
   FieldValue,
   updateDoc,
   increment,
+  deleteDoc,
 } from "firebase/firestore";
 import { addDoc } from "firebase/firestore";
 import PageAbout from "./Profile.vue";
@@ -168,32 +180,25 @@ export default {
       // };
       // this.reviews.push(newReview);
     },
-    async upvoteReview(review) {
+    upvoteReview(review) {
       const docRef = doc(db, "reviews", review.id);
-      await updateDoc(docRef, {
+      updateDoc(docRef, {
         upvotes: increment(1),
       });
       // review.upvotes = tempVote;
       // console.log("Total Upvotes: ", tempVote);
     },
-    async downvoteReview(review) {
+    downvoteReview(review) {
       const docRef = doc(db, "reviews", review.id);
-      await updateDoc(docRef, {
+      updateDoc(docRef, {
         upvotes: increment(-1),
       });
       // review.upvotes = tempVote;
       // console.log("Total Downvotes: ", tempVote);
     },
     deleteReview(review) {
-      db.collection("reviews")
-        .doc(review.id)
-        .delete()
-        .then(function () {
-          console.log("Document successfully deleted!");
-        })
-        .catch(function (error) {
-          console.error("Error removing document: ", error);
-        });
+      deleteDoc(doc(db, "reviews", review.id));
+      console.log("Document successfully deleted!");
     },
   },
   filters: {
