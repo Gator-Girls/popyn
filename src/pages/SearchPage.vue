@@ -129,65 +129,65 @@ export default {
       ],
     };
   },
-  methods: {
-    addNewReview() {
-      const docRef = addDoc(collection(db, "reviews"), {
-        content: this.newReviewContent,
-        author: this.authorName,
-        locationID: this.location,
-        date: Date.now(),
-      });
-      // let newReview = {
-      //   content: this.newReviewContent,
-      //   date: Date.now(),
-      // };
-      // this.reviews.push(newReview);
-      console.log("Document written with ID: ", docRef.id);
-    },
-    deleteReview(review) {
-      db.collection("reviews")
-        .doc(review.id)
-        .delete()
-        .then(function () {
-          console.log("Document successfully deleted!");
-        })
-        .catch(function (error) {
-          console.error("Error removing document: ", error);
-        });
-    },
-  },
-  filters: {
-    relativeDate(value) {
-      return formatDistance(value, new Date());
-    },
-  },
-  mounted() {
-    const q = query(collection(db, "reviews"));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      snapshot.docChanges().forEach((change) => {
-        let reviewChange = change.doc.data();
-        reviewChange.id = change.doc.id;
-        if (change.type === "added") {
-          console.log("New review: ", change.doc.data());
-          this.reviews.unshift(reviewChange);
-        }
-        if (change.type === "modified") {
-          console.log("Modified qweet: ", reviewChange);
-          let index = this.reviews.findIndex(
-            (review) => review.id === reviewChange.id
-          );
-          Object.assign(this.reviews[index], reviewChange);
-        }
-        if (change.type === "removed") {
-          console.log("Removed qweet: ", reviewChange);
-          let index = this.reviews.findIndex(
-            (review) => review.id === reviewChange.id
-          );
-          this.reviews.splice(index, 1);
-        }
-      });
-    });
-  },
+  // methods: {
+  //   addNewReview() {
+  //     const docRef = addDoc(collection(db, "reviews"), {
+  //       content: this.newReviewContent,
+  //       author: this.authorName,
+  //       locationID: this.location,
+  //       date: Date.now(),
+  //     });
+  //     console.log("Document written with ID: ", docRef.id);
+  //     // let newReview = {
+  //     //   content: this.newReviewContent,
+  //     //   date: Date.now(),
+  //     // };
+  //     // this.reviews.push(newReview);
+  //   },
+  //   deleteReview(review) {
+  //     db.collection("reviews")
+  //       .doc(review.id)
+  //       .delete()
+  //       .then(function () {
+  //         console.log("Document successfully deleted!");
+  //       })
+  //       .catch(function (error) {
+  //         console.error("Error removing document: ", error);
+  //       });
+  //   },
+  // },
+  // filters: {
+  //   relativeDate(value) {
+  //     return formatDistance(value, new Date());
+  //   },
+  // },
+  // mounted() {
+  //   const q = query(collection(db, "reviews"));
+  //   const unsubscribe = onSnapshot(q, (snapshot) => {
+  //     snapshot.docChanges().forEach((change) => {
+  //       let reviewChange = change.doc.data();
+  //       reviewChange.id = change.doc.id;
+  //       if (change.type === "added") {
+  //         console.log("New review: ", change.doc.data());
+  //         this.reviews.unshift(reviewChange);
+  //       }
+  //       if (change.type === "modified") {
+  //         console.log("Modified qweet: ", reviewChange);
+  //         let index = this.reviews.findIndex(
+  //           (review) => review.id === reviewChange.id
+  //         );
+  //         Object.assign(this.reviews[index], reviewChange);
+  //       }
+  //       if (change.type === "removed") {
+  //         console.log("Removed qweet: ", reviewChange);
+  //         let index = this.reviews.findIndex(
+  //           (review) => review.id === reviewChange.id
+  //         );
+  //         this.reviews.splice(index, 1);
+  //       }
+  //     });
+  //   });
+  // },
 };
 </script>
 

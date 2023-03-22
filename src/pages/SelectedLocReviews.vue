@@ -1,7 +1,4 @@
 <template>
-  <div>
-    <h1>{{ locID }}</h1>
-  </div>
   <q-page class="relative-position">
     <q-scroll-area class="absolute full-width full-height">
       <div class="q-py-lg q-px-md row items-end q-col-gutter-md">
@@ -65,29 +62,29 @@
               <q-item-label class="review-content text-body2">{{
                 review.locationID
               }}</q-item-label>
-
-              <div class="review-icons row justify-between q-mt-sm">
+              <q-item-label class="review-content text-body3">{{
+                review.upvotes
+              }}</q-item-label>
+              <div class="col col-shrink">
                 <q-btn
-                  color="grey"
-                  icon="far fa-comment"
-                  size="sm"
-                  flat
-                  round
+                  @click="upvoteReview(review)"
+                  class="q-mb-lg"
+                  color="primary"
+                  label="Upvote"
+                  rounded
+                  unelevated
+                  no-caps
                 />
+              </div>
+              <div class="col col-shrink">
                 <q-btn
-                  color="grey"
-                  icon="fas fa-retweet"
-                  size="sm"
-                  flat
-                  round
-                />
-                <q-btn
-                  @click="deleteReview(review)"
-                  color="grey"
-                  icon="fas fa-trash"
-                  size="sm"
-                  flat
-                  round
+                  @click="downvoteReview(review)"
+                  class="q-mb-lg"
+                  color="primary"
+                  label="Downvote"
+                  rounded
+                  unelevated
+                  no-caps
                 />
               </div>
             </q-item-section>
@@ -103,10 +100,20 @@
 //display the list of reviews that responds to the bar's unique
 //location ID, in order of newest to oldest
 import db from "src/boot/firebase";
-import { collection, query, where, onSnapshot } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  query,
+  where,
+  onSnapshot,
+  FieldValue,
+  updateDoc,
+  increment,
+} from "firebase/firestore";
 import { addDoc } from "firebase/firestore";
 import PageAbout from "./Profile.vue";
 import SearchPage from "./SearchPage.vue";
+import ReviewComments from "./SelectedRevComments.vue";
 
 export default {
   name: "LocationReviews",
@@ -118,27 +125,29 @@ export default {
       newReviewContent: "",
       authorName: "",
       locationID: "",
+      upvotes: 0,
       commentIDs: [],
-      passingVal: "the passing value",
       reviews: [
         // {
         //   content: "hard code 1",
         //   author: "dani",
         //   locationID: "Midtown",
         //   date: "today 1",
-        //   passingVal: "testing passing",
+        //   upvotes: 5,
         // },
         // {
         //   content: "hard code 2",
         //   author: "dani",
         //   locationID: "Midtown",
         //   date: "today 2",
+        //   upvotes: 4,
         // },
         // {
         //   content: "hard code 3",
         //   author: "dani",
         //   locationID: "Not Midtown",
         //   date: "today 2",
+        //   upvotes: 2,
         // },
       ],
     };
@@ -147,16 +156,31 @@ export default {
     addNewReview() {
       const docRef = addDoc(collection(db, "reviews"), {
         content: this.newReviewContent,
-        author: this.authorName,
-        locationID: this.location,
+        author: "queenalberta",
+        locationID: "Grog32603",
+        upvotes: 0,
         date: Date.now(),
       });
+      console.log("Document written with ID: ", docRef.id);
       // let newReview = {
       //   content: this.newReviewContent,
       //   date: Date.now(),
       // };
       // this.reviews.push(newReview);
-      console.log("Document written with ID: ", docRef.id);
+    },
+    async upvoteReview(review) {
+      const docRef = doc(db, "reviews", review.id);
+      await updateDoc(docRef, {
+        upvotes: increment(1),
+      });
+      // review.upvotes = tempVote;
+      // console.log("Total Upvotes: ", tempVote);
+    },
+    downvoteReview(review) {
+      let tempVote = review.upvotes - 1;
+      db.collection("reviews").doc(doc.id).update({ upvotes: tempVote });
+      // review.upvotes = tempVote;
+      // console.log("Total Downvotes: ", tempVote);
     },
     deleteReview(review) {
       db.collection("reviews")
