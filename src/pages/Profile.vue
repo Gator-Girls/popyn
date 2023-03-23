@@ -20,6 +20,6 @@
 
 <script>
 export default {
-  name: "SearchPage",
+  name: "PageAbout",
 };
 </script>
