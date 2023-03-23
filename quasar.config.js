@@ -79,8 +79,13 @@ module.exports = configure(function (ctx) {
         type: "http",
       },
       proxy: {
-        changeOrigin: true,
-        target: "http://localhost:8080",
+        "^/maps/api": {
+          target: "https://maps.googleapis.com",
+          changeOrigin: true,
+          pathRewrite: {
+            "^/maps/api": "/maps/api",
+          },
+        },
       },
     },
     port: 8080,

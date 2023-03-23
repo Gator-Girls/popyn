@@ -7,7 +7,7 @@ const db = Firestore();
 
 const axios = require("axios");
 const cors = require("cors")({
-  origin: true,
+  origin: "http://localhost:8080",
 });
 
 const googleMapsApiKey = "AIzaSyBX343Nmh74V7B37a98q1pbtkqYfVt77XI";
@@ -17,8 +17,11 @@ exports.geocodeAddressAndSave = functions.https.onRequest(
     try {
       const address = encodeURI(request.body.address);
       const { data } = await axios.get(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${googleMapsApiKey}`
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${googleMapsApiKey}`,
         // https://maps.googleapis.com/maps/api/place/nearbysearch/output?parameters
+        {
+          withCredentials: true,
+        }
       );
 
       if (data.status !== "OK") {

@@ -75,7 +75,7 @@ export default defineComponent({
     async getAddressFrom(lat, lng) {
       await axios
         .get(
-          "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=The%20Social%20at%20Midtown%20Gainesville&inputtype=textquery&fields=formatted_address,name,rating,opening_hours,geometry&key=AIzaSyBX343Nmh74V7B37a98q1pbtkqYfVt77XI",
+          "https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyBX343Nmh74V7B37a98q1pbtkqYfVt77XI",
           {
             withCredentials: true,
           }
