@@ -20,7 +20,70 @@
       to="/CreatePop"
     ></q-btn>
 
-    <div class="row justify-center">
+    <div class="column items-center">
+      <div class="row">
+        <q-btn
+          color="primary text-black"
+          class="q-mt-md"
+          no-caps
+          style="width: 400px"
+        >
+          <div class="col-8 text-left">
+            <div class="text-weight-bold">
+              1. The Backyard at Boca Fiesta & Palominos
+            </div>
+            <div class="q-pl-sm text-white fontsize-">
+              <div>2.7 mi • Bar • $$</div>
+              <div>Open 4:00pm - 2:00am</div>
+              <div>★★★★☆ (38)</div>
+            </div>
+          </div>
+          <div class="col-4">
+            <img
+              alt="Popyn logo"
+              src="~assets/Popyn_-logos_transparent.ico"
+              style="width: 88px; height: 88px"
+            />
+          </div>
+        </q-btn>
+      </div>
+      <div class="row">
+        <q-btn
+          color="primary text-black"
+          class="q-mt-md"
+          no-caps
+          style="width: 400px"
+        >
+          <div class="col-8 text-left">column 1</div>
+          <div class="col-4">
+            <img
+              alt="Popyn logo"
+              src="~assets/Popyn_-logos_transparent.ico"
+              style="width: 88px; height: 88px"
+            />
+          </div>
+        </q-btn>
+      </div>
+      <div class="row">
+        <q-btn
+          color="primary text-black"
+          class="q-mt-md"
+          no-caps
+          style="width: 400px"
+        >
+          <div class="col-8 text-left">column 1</div>
+          <div class="col-4">
+            <img
+              alt="Popyn logo"
+              src="~assets/Popyn_-logos_transparent.ico"
+              style="width: 88px; height: 88px"
+            />
+          </div>
+        </q-btn>
+      </div>
+    </div>
+
+    <!-- <div class="row justify-center">
       <q-btn color="primary" class="q-mt-md" no-caps style="width: 400px">
         <div class="column text-black text-left" style="height: 80px">
           <div class="col text-weight-bold">
@@ -52,7 +115,7 @@
           style="width: 88px; height: 88px"
         />
       </q-btn>
-    </div>
+    </div> -->
   </q-page>
 </template>
 
