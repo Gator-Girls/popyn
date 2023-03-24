@@ -12,18 +12,11 @@
       src="~assets/Popyn_-logos_transparent.ico"
       style="width: 300px; height: 300px"
     /> -->
-    <q-btn
-      round
-      class="absolute-bottom-right q-mb-sm q-mr-sm"
-      color="primary"
-      icon="add"
-      to="/CreatePop"
-    ></q-btn>
 
     <div class="column items-center">
       <div class="row">
         <q-btn
-          color="primary text-black"
+          color="secondary text-black"
           class="q-mt-md"
           no-caps
           style="width: 400px; height: 120px"
@@ -37,10 +30,10 @@
               <div>★★★★☆ (38)</div>
             </div>
           </div>
-          <div class="col-4">
+          <div class="col-4 self-center q-mt-sm">
             <img
               alt="Popyn logo"
-              src="~assets/Popyn_-logos_transparent.ico"
+              src="~assets/backyard.ico"
               style="width: 88px; height: 88px"
             />
           </div>
@@ -48,7 +41,7 @@
       </div>
       <div class="row">
         <q-btn
-          color="primary text-black"
+          color="secondary text-black"
           class="q-mt-md"
           no-caps
           style="width: 400px; height: 120px"
@@ -61,10 +54,10 @@
               <div>★★★★☆ (29)</div>
             </div>
           </div>
-          <div class="col-4">
+          <div class="col-4 self-center q-mt-sm">
             <img
               alt="Popyn logo"
-              src="~assets/Popyn_-logos_transparent.ico"
+              src="~assets/dtf.ico"
               style="width: 88px; height: 88px"
             />
           </div>
@@ -72,7 +65,7 @@
       </div>
       <div class="row">
         <q-btn
-          color="primary text-black"
+          color="secondary text-black"
           class="q-mt-md"
           no-caps
           style="width: 400px; height: 120px"
@@ -85,10 +78,10 @@
               <div>★★★☆☆ (20)</div>
             </div>
           </div>
-          <div class="col-4">
+          <div class="col-4 self-center q-mt-xs">
             <img
               alt="Popyn logo"
-              src="~assets/Popyn_-logos_transparent.ico"
+              src="~assets/fatdaddy.ico"
               style="width: 88px; height: 88px"
             />
           </div>
@@ -96,7 +89,7 @@
       </div>
       <div class="row">
         <q-btn
-          color="primary text-black"
+          color="secondary text-black"
           class="q-mt-md"
           no-caps
           style="width: 400px; height: 120px"
@@ -109,10 +102,10 @@
               <div>★★★☆☆ (14)</div>
             </div>
           </div>
-          <div class="col-4">
+          <div class="col-4 self-center q-mt-sm">
             <img
               alt="Popyn logo"
-              src="~assets/Popyn_-logos_transparent.ico"
+              src="~assets/barcade.ico"
               style="width: 88px; height: 88px"
             />
           </div>
