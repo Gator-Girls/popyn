@@ -29,9 +29,13 @@ const cors = require("cors")({
 });
 
 export default defineComponent({
+  mounted() {
+    this.showLocationOnMap(position.coords.latitude, position.coords.longitude);
+  },
   data() {
     return {
-      address: "",
+      latLoc: "",
+      lngLoc: "",
       error: "",
     };
   },
@@ -44,10 +48,6 @@ export default defineComponent({
         navigator.geolocation.getCurrentPosition(
           (position) => {
             this.getAddressFrom(
-              position.coords.latitude,
-              position.coords.longitude
-            );
-            this.showLocationOnMap(
               position.coords.latitude,
               position.coords.longitude
             );
@@ -75,16 +75,16 @@ export default defineComponent({
     async getAddressFrom(lat, lng) {
       await axios
         .get(
-          "https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyBX343Nmh74V7B37a98q1pbtkqYfVt77XI",
-          {
-            withCredentials: true,
-          }
+          "https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyBX343Nmh74V7B37a98q1pbtkqYfVt77XI"
         )
         .then((response) => {
           if (response.data.error_messaage) {
-            console.log(response.data.error_message);
+            return cors(request, response, () => {
+              response.status(200).send("No Results");
+            });
           } else {
-            this.address = response.data.results[0].formatted_address;
+            this.latLoc = response.data.results[0].geometry.location.lat;
+            this.lngLoc = response.data.results[0].geometry.location.lng;
           }
         })
         .catch((error) => {
