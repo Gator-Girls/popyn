@@ -83,8 +83,9 @@ export default defineComponent({
               response.status(200).send("No Results");
             });
           } else {
-            this.latLoc = response.data.results[0].geometry.location.lat;
-            this.lngLoc = response.data.results[0].geometry.location.lng;
+            console.log(response);
+            // this.latLoc = response.data.results[0].LatLng.lat;
+            // this.lngLoc = response.data.results[0].LatLng.lng;
           }
         })
         .catch((error) => {
