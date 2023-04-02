@@ -20,10 +20,17 @@
         />
         <q-btn
           class="my-button"
+          color="primary"
+          text-color="white"
+          label="Exact"
+          @click="findExactLoc"
+        />
+        <q-btn
+          class="my-button"
           color="secondary"
           text-color="white"
           label="Nearby"
-          @click="findLocationsNearby"
+          @click="findExactLoc"
         />
       </div>
     </q-page>
@@ -48,17 +55,17 @@ const cors = require("cors")({
 
 export default defineComponent({
   name: "SearchPage",
-  mounted() {
-    this.showLocationOnMap(latLoc, lngLoc);
-  },
-  data() {
-    return {
-      latLoc: "29.628825",
-      lngLoc: "-82.37875",
-      error: "",
-      places: [],
-    };
-  },
+  // mounted() {
+  //   this.showLocationOnMap(latLoc, lngLoc);
+  // },
+  data: () => ({
+    latLoc: "",
+    lngLoc: "",
+    error: "",
+    current_placeId: "",
+    address: "",
+    places: [],
+  }),
   computed: {
     coordinates() {
       return `${this.latLoc},${this.lngLoc}`;
@@ -71,7 +78,8 @@ export default defineComponent({
           (position) => {
             this.latLoc = position.coords.latitude;
             this.lngLoc = position.coords.longitude;
-            console.log(this.latLoc);
+            console.log("latitude" + this.latLoc);
+            console.log("longitude" + this.lngLoc);
           },
           (error) => {
             console.log(error.message);
@@ -81,64 +89,44 @@ export default defineComponent({
         console.log("Not supported");
       }
     },
-    showLocationOnMap(latitude, longitude) {
-      var map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 15,
-        center: new google.maps.LatLng(latitude, longitude),
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-      });
+    async findExactLoc() {
+      const latlng = `${this.latLoc},${this.lngLoc}`;
 
-      new google.maps.Marker({
-        position: new google.maps.LatLng(latitude, longitude),
-        map: map,
-      });
+      let { data } = await axios.post(
+        "https://us-central1-popyn-18d51.cloudfunctions.net/findExactLocation",
+        {
+          latlng: latlng,
+        }
+      );
+
+      if (data === "No Results") {
+        // return cors(request, response, () => {
+        //   response.status(500).send();
+        // });
+        console.log(data);
+        console.log("here");
+        return;
+      }
+
+      console.log(data);
     },
-    async findLocationsNearby() {
-      await axios
-        .get(
-          "https://maps.googleapis.com/maps/api/geocode/json?latlng=" +
-            this.latLoc +
-            "," +
-            this.lngLoc +
-            "&key=AIzaSyBX343Nmh74V7B37a98q1pbtkqYfVt77XI"
-        )
-        .then((response) => {
-          if (response.data.error_messaage) {
-            return cors(request, response, () => {
-              response.status(200).send("No Results");
-            });
-          } else {
-            console.log(response.data.results[0]);
-            // this.latLoc = response.data.results[0].LatLng.lat;
-            // this.lngLoc = response.data.results[0].LatLng.lng;
-          }
-        })
-        .catch((error) => {
-          console.log(error.message);
-        });
-    },
-    // async findLocationsNearby() {
-    //   await axios
-    //     .get(
-    //       // `https://maps.googleapis.com/maps/api/place/nearbysearch/output?location=${this.latLoc},${this.lngLoc}&radius=50000&type=bar&type=night_club&key=AIzaSyBX343Nmh74V7B37a98q1pbtkqYfVt77XI`
-    //       "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" +
-    //         latLoc +
-    //         "," +
-    //         lngLoc +
-    //         "&radius=50000&type=bar&type=night_club&key=AIzaSyBX343Nmh74V7B37a98q1pbtkqYfVt77XI"
-    //     )
-    //     .then((response) => {
-    //       if (response.data.error_messaage) {
-    //         return cors(request, response, () => {
-    //           response.status(200).send("No Results");
-    //         });
-    //       } else {
-    //         console.log(response.data.results);
-    //       }
-    //     })
-    //     .catch((error) => {
-    //       console.log(error.message);
+    // async findLocNearby() {
+    //   let latlng = this.latLoc + "," + this.lngLoc;
+    //   let { data } = await axios.get(
+    //     "https://us-central1-popyn-18d51.cloudfunctions.net/findExactLocation",
+    //     {
+    //       latlng: latlng,
+    //     }
+    //   );
+
+    //   if (data === "No Results") {
+    //     return cors(request, response, () => {
+    //       console.log(error);
+    //       response.status(500).send();
     //     });
+    //   }
+
+    //   console.log(data);
     // },
   },
 });

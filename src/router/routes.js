@@ -18,6 +18,11 @@ const routes = [
         component: () => import("src/pages/SearchPage.vue"),
         name: "SearchPage",
       },
+      {
+        path: "/mapcontainer",
+        component: () => import("src/pages/MapContainer.vue"),
+        name: "MapContainer",
+      },
     ],
   },
 

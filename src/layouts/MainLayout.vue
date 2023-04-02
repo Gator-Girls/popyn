@@ -44,6 +44,12 @@
             >Search</q-item-section
           >
         </q-item>
+        <q-item to="/mapcontainer" v-ripple clickable exact>
+          <q-item-section avatar>
+            <q-icon name="mapcontainer" size="md" />
+          </q-item-section>
+          <q-item-section class="text-h6 text-weight-bold">Map</q-item-section>
+        </q-item>
       </q-list>
     </q-drawer>
 
