@@ -34,7 +34,7 @@
       <q-list>
         <q-item v-for="place in places" :key="place.id">
           <q-item-section>
-            <img :src="place.imageSrc" alt="Place image" />
+            <img :src="place.image" alt="Place image" />
           </q-item-section>
 
           <q-item-section>
@@ -109,6 +109,7 @@ export default defineComponent({
       return `${this.latLoc},${this.lngLoc}`;
     },
   },
+
   methods: {
     AccessLocation() {
       this.latLoc = "29.6532";
@@ -151,7 +152,6 @@ export default defineComponent({
         id: data.id,
         name: data.name,
         address: data.address,
-        image: data.icon,
         rating: data.rating,
       };
       this.places.push(obj);
@@ -179,16 +179,14 @@ export default defineComponent({
           id: data[i].id,
           name: data[i].name,
           address: data[i].address,
-          image: data[i].icon,
+          image: data[i].imageSrc,
           rating: data[i].rating,
         };
         this.places.push(obj);
       }
 
-      // for (let i = 0; i < this.places.length; i++) {
-      //   console.log(this.places[i]);
-      // }
       console.log("Bars");
+
       console.log(data);
     },
     async findClubsNearby() {
@@ -212,11 +210,13 @@ export default defineComponent({
           id: data[i].id,
           name: data[i].name,
           address: data[i].address,
-          image: data[i].icon,
           rating: data[i].rating,
+          image: data[i].imageSrc,
         };
         this.places.push(obj);
+        console.log(data[i].imageSrc);
       }
+
       console.log("Clubs");
       console.log(data);
     },
