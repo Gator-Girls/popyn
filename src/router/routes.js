@@ -53,6 +53,11 @@ const routes = [
         component: () => import("src/pages/CreatePop.vue"),
         name: "CreatePop",
       },
+      {
+        path: "/backyardcomments",
+        component: () => import("src/pages/BackyardComments.vue"),
+        name: "BackyardComments",
+      },
     ],
   },
 

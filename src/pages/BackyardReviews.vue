@@ -92,6 +92,7 @@
                   size="sm"
                   icon="chat_bubble_outline"
                   style="margin-left: -6px"
+                  to="/BackyardComments"
                 >
                 </q-btn>
                 <q-item-label class="q-mt-sm" caption>(1)</q-item-label>
@@ -116,5 +117,13 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "PageBackyardReviews",
+  new_review: "",
+  reviews: [
+    {
+      id: "",
+      comment: "",
+      date: "",
+    },
+  ],
 });
 </script>
