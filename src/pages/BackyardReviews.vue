@@ -51,6 +51,7 @@
                     size="sm"
                     icon="chat_bubble_outline"
                     style="margin-left: -6px"
+                    to="/BackyardComments"
                   >
                   </q-btn>
                   <q-item-label class="q-mt-sm" caption>{{
