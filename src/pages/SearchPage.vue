@@ -190,6 +190,7 @@ export default defineComponent({
       console.log(data);
     },
     async findClubsNearby() {
+      this.places = [];
       let latlng = this.latLoc + "," + this.lngLoc;
       let { data } = await axios.post(
         "https://us-central1-popyn-18d51.cloudfunctions.net/findNearbyClubs",
