@@ -3,8 +3,14 @@
     <h5 class="row justify-center">Logyn</h5>
     <div class="row justify-center">
       <div class="col q-gutter-md" style="max-width: 400px">
-        <q-input rounded outlined v-model="text" label="Email address" />
-        <q-input rounded outlined v-model="text" label="Password" />
+        <q-input rounded outlined v-model="email" label="Email address" />
+        <q-input
+          rounded
+          outlined
+          v-model="password"
+          type="password"
+          label="Password"
+        />
       </div>
     </div>
 
@@ -36,5 +42,11 @@
 <script>
 export default {
   name: "PageLogin",
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
 };
 </script>

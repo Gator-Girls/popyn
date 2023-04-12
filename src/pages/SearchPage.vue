@@ -4,6 +4,7 @@
       <q-input
         placeholder="Whats Popyn?"
         class="q-ma-md"
+        v-model="search"
         outlined
         rounded
         dense
@@ -20,5 +21,10 @@
 <script>
 export default {
   name: "SearchPage",
+  data() {
+    return {
+      search: "",
+    };
+  },
 };
 </script>

@@ -3,10 +3,16 @@
     <h5 class="row justify-center">Sign up</h5>
     <div class="row justify-center">
       <div class="col q-gutter-md" style="max-width: 400px">
-        <q-input rounded outlined v-model="text" label="First name" />
-        <q-input rounded outlined v-model="text" label="Last name" />
-        <q-input rounded outlined v-model="text" label="Email address" />
-        <q-input rounded outlined v-model="text" label="Password" />
+        <q-input rounded outlined v-model="firstname" label="First name" />
+        <q-input rounded outlined v-model="lastname" label="Last name" />
+        <q-input rounded outlined v-model="email" label="Email address" />
+        <q-input
+          rounded
+          outlined
+          v-model="password"
+          type="password"
+          label="Password"
+        />
       </div>
     </div>
 
@@ -26,5 +32,13 @@
 <script>
 export default {
   name: "PageSignup",
+  data() {
+    return {
+      firstname: "",
+      lastname: "",
+      email: "",
+      password: "",
+    };
+  },
 };
 </script>
