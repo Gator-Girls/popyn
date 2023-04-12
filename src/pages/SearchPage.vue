@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <q-page class="q-pa-lg">
+  <q-page class="q-pa-lg">
+    <div class="text-body1">
       <q-input
         placeholder="Whats Popyn?"
         class="q-ma-md"
@@ -12,11 +12,9 @@
           <q-icon name="search" />
         </template>
       </q-input>
-      <q-btn icon="location_on" @click="findLocation" />
-    </q-page>
-
-    <section id="map"></section>
-  </div>
+    </div>
+    <!-- <h5 class="q-mt-none q-mb-md text-weight-bold">Results</h5> -->
+  </q-page>
 </template>
 
 <script>
