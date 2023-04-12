@@ -34,71 +34,32 @@
 
         <q-separator color="black" size="1.3px" />
 
-        <q-item class="bg-secondary">
-          <q-item-section>
-            <q-item-label caption top>2m ago</q-item-label>
-            <q-item-label>the music is AMAZING tonite xP</q-item-label>
-            <q-item-label>
-              <div class="row">
-                <q-btn
-                  flat
-                  round
-                  size="sm"
-                  icon="chat_bubble_outline"
-                  style="margin-left: -6px"
-                >
-                </q-btn>
-                <q-item-label class="q-mt-sm" caption>(0)</q-item-label>
-              </div>
-            </q-item-label>
-          </q-item-section>
-        </q-item>
-
-        <q-item class="bg-secondary">
-          <q-item-section>
-            <q-item-label caption top>24m ago</q-item-label>
-            <q-item-label
-              >wow this place is packed!! and drinks are so expensive
-              bruh</q-item-label
-            >
-            <q-item-label>
-              <div class="row">
-                <q-btn
-                  flat
-                  round
-                  size="sm"
-                  icon="chat_bubble_outline"
-                  style="margin-left: -6px"
-                >
-                </q-btn>
-                <q-item-label class="q-mt-sm" caption>(2)</q-item-label>
-              </div>
-            </q-item-label>
-          </q-item-section>
-        </q-item>
-
-        <q-item class="bg-secondary">
-          <q-item-section>
-            <q-item-label caption top>34m ago</q-item-label>
-            <q-item-label
-              >did anyone preband????? im tryna go OUT tonight!!
-              WOOOO</q-item-label
-            >
-            <q-item-label>
-              <div class="row">
-                <q-btn
-                  flat
-                  round
-                  size="sm"
-                  icon="chat_bubble_outline"
-                  style="margin-left: -6px"
-                  to="/BackyardComments"
-                >
-                </q-btn>
-                <q-item-label class="q-mt-sm" caption>(1)</q-item-label>
-              </div>
-            </q-item-label>
-          </q-item-section>
+        <q-item
+          v-for="review in reviews"
+          :key="review.id"
+          class="review q-py-md"
+        >
+          <q-item class="bg-secondary">
+            <q-item-section style="width: 330px">
+              <q-item-label caption top>{{ review.time }}</q-item-label>
+              <q-item-label>{{ review.content }}</q-item-label>
+              <q-item-label>
+                <div class="row">
+                  <q-btn
+                    flat
+                    round
+                    size="sm"
+                    icon="chat_bubble_outline"
+                    style="margin-left: -6px"
+                  >
+                  </q-btn>
+                  <q-item-label class="q-mt-sm" caption>{{
+                    review.numComments
+                  }}</q-item-label>
+                </div>
+              </q-item-label>
+            </q-item-section>
+          </q-item>
         </q-item>
       </q-list>
     </div>
@@ -117,13 +78,26 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "PageBackyardReviews",
-  new_review: "",
-  reviews: [
-    {
-      id: "",
-      comment: "",
-      date: "",
-    },
-  ],
+  data() {
+    return {
+      reviews: [
+        {
+          time: "2m ago",
+          content: "the music is AMAZING tonite xP",
+          numComments: "(1)",
+        },
+        {
+          time: "24m ago",
+          content: "wow this place is packed!! and drinks are so expensive",
+          numComments: "(2)",
+        },
+        {
+          time: "34m ago",
+          content: "did anyone preband????? im tryna go OUT tonight!! WOOOO",
+          numComments: "(0)",
+        },
+      ],
+    };
+  },
 });
 </script>

@@ -14,7 +14,7 @@
     /> -->
 
     <div class="column items-center">
-      <q-item v-for="barP in bars" :key="barP.id" class="barP q-py-md">
+      <q-item v-for="barP in bars" :key="barP.id" class="barP q-py-xs">
         <div class="row">
           <q-btn
             color="secondary text-black"
@@ -36,7 +36,7 @@
             <div class="col-4 self-center q-mt-sm">
               <img
                 alt="Popyn logo"
-                :src="`~assets/$(barP.img).ico`"
+                :src="barP.img"
                 style="width: 88px; height: 88px"
               />
             </div>
@@ -61,7 +61,7 @@ export default defineComponent({
           distanceLine: "2.7 mi • Bar • $$",
           hours: "Open 4:00pm - 2:00am",
           stars: "★★★★☆ (38)",
-          img: "backyard",
+          img: require("../assets/backyard.ico"),
         },
         {
           locName: "Downtown Fats",
@@ -69,7 +69,7 @@ export default defineComponent({
           distanceLine: "2.4 mi • Bar • $",
           hours: "Open 4:00pm - 2:00am",
           stars: "★★★★☆ (29)",
-          img: "assets / dtf.ico",
+          img: require("../assets/dtf.ico"),
         },
         {
           locName: "Fat Daddy's",
@@ -77,7 +77,7 @@ export default defineComponent({
           distanceLine: "3.1 mi • Bar • $",
           hours: "Open 4:00pm - 2:00am",
           stars: "★★★☆☆ (20)",
-          img: "assets / fatdaddy.ico",
+          img: require("../assets/fatdaddy.ico"),
         },
         {
           locName: "Arcade Bar",
@@ -85,7 +85,7 @@ export default defineComponent({
           distanceLine: "2.8 mi • Bar • $",
           hours: "Open 4:00pm - 3:00am",
           stars: "★★★☆☆ (14)",
-          img: "assets / barcade.ico",
+          img: require("../assets/barcade.ico"),
         },
       ],
     };
