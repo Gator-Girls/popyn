@@ -21,7 +21,7 @@
             class="q-mt-md"
             no-caps
             style="width: 400px; height: 120px"
-            to="/BackyardReviews"
+            :to="barP.pathTo"
           >
             <div class="col-8 text-left">
               <div class="text-weight-bold">
@@ -61,6 +61,7 @@ export default defineComponent({
           distanceLine: "2.7 mi • Bar • $$",
           hours: "Open 4:00pm - 2:00am",
           stars: "★★★★☆ (38)",
+          pathTo: "/BackyardReviews",
           img: require("../assets/backyard.ico"),
         },
         {
@@ -69,6 +70,7 @@ export default defineComponent({
           distanceLine: "2.4 mi • Bar • $",
           hours: "Open 4:00pm - 2:00am",
           stars: "★★★★☆ (29)",
+          pathTo: "/dtfreviews",
           img: require("../assets/dtf.ico"),
         },
         {
@@ -77,6 +79,7 @@ export default defineComponent({
           distanceLine: "3.1 mi • Bar • $",
           hours: "Open 4:00pm - 2:00am",
           stars: "★★★☆☆ (20)",
+          pathTo: "/fatdaddyreviews",
           img: require("../assets/fatdaddy.ico"),
         },
         {
@@ -85,6 +88,7 @@ export default defineComponent({
           distanceLine: "2.8 mi • Bar • $",
           hours: "Open 4:00pm - 3:00am",
           stars: "★★★☆☆ (14)",
+          pathTo: "/barcadereviews",
           img: require("../assets/barcade.ico"),
         },
       ],

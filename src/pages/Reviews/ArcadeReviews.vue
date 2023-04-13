@@ -14,17 +14,17 @@
           <q-item-section>
             <div class="row">
               <div class="col-8 q-mt-xs">
-                <div class="text-weight-bold">The Backyard at Boca Fiesta</div>
+                <div class="text-weight-bold">Arcade Bar</div>
                 <div class="q-pl-sm">
-                  <div>2.7 mi • Bar • $$</div>
-                  <div>Open 4:00pm - 2:00am</div>
-                  <div>★★★★☆ (38)</div>
+                  <div>2.8 mi • Bar • $</div>
+                  <div>Open 4:00pm - 3:00am</div>
+                  <div>★★★☆☆ (14)</div>
                 </div>
               </div>
               <div class="col-4 self-center q-mt-xs q-pl-lg">
                 <img
                   alt="Popyn logo"
-                  src="~assets/backyard.ico"
+                  src="~assets/barcade.ico"
                   style="width: 88px; height: 88px"
                 />
               </div>
@@ -52,7 +52,7 @@
                       size="sm"
                       icon="chat_bubble_outline"
                       style="margin-left: -6px"
-                      to="/BackyardComments"
+                      to="/FatDComments"
                     >
                     </q-btn>
                     <q-item-label class="q-mt-sm" caption>{{
@@ -101,25 +101,19 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "PageBackyardReviews",
+  name: "PageArcadeReviews",
   data() {
     return {
       reviews: [
         {
-          time: "2m ago",
-          content: "the music is AMAZING tonite xP",
-          numComments: "(1)",
+          time: "3m ago",
+          content: "wish i had more tokens",
+          numComments: "(0)",
           value: 0,
         },
         {
-          time: "24m ago",
-          content: "wow this place is packed!! and drinks are so expensive",
-          numComments: "(2)",
-          value: 0,
-        },
-        {
-          time: "34m ago",
-          content: "did anyone preband????? im tryna go OUT tonight!! WOOOO",
+          time: "2hr ago",
+          content: "it's so empty i have the whole place to myself",
           numComments: "(0)",
           value: 0,
         },

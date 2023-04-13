@@ -10,8 +10,23 @@ const routes = [
       },
       {
         path: "/backyardreviews",
-        component: () => import("src/pages/BackyardReviews.vue"),
+        component: () => import("src/pages/Reviews/BackyardReviews.vue"),
         name: "BackyardReviews",
+      },
+      {
+        path: "/dtfreviews",
+        component: () => import("src/pages/Reviews/DownFatsReviews.vue"),
+        name: "PageDTFReviews",
+      },
+      {
+        path: "/fatdaddyreviews",
+        component: () => import("src/pages/Reviews/FatDaddysReviews.vue"),
+        name: "PageFatDReviews",
+      },
+      {
+        path: "/barcadereviews",
+        component: () => import("src/pages/Reviews/ArcadeReviews.vue"),
+        name: "PageArcadeReviews",
       },
       {
         path: "/nearby",
@@ -55,8 +70,13 @@ const routes = [
       },
       {
         path: "/backyardcomments",
-        component: () => import("src/pages/BackyardComments.vue"),
+        component: () => import("src/pages/Comments/BackyardComments.vue"),
         name: "BackyardComments",
+      },
+      {
+        path: "/dtfcomments",
+        component: () => import("src/pages/Comments/DownFatsComments.vue"),
+        name: "PageDTFComments",
       },
       {
         path: "/mybackyardcomments",
