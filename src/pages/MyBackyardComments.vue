@@ -3,7 +3,7 @@
     round
     color="primary text-black"
     class="q-mt-md q-ml-sm"
-    to="/BackyardReviews"
+    to="/MyPops"
     icon="arrow_back"
   >
   </q-btn>
@@ -13,8 +13,11 @@
         <q-item-section>
           <div class="row">
             <div class="col-11 q-mt-xs">
-              <q-item-label caption top>2m ago</q-item-label>
-              <q-item-label>the music is AMAZING tonite xP</q-item-label>
+              <q-item-label caption top>34m ago</q-item-label>
+              <q-item-label
+                >did anyone preband????? im tryna go OUT tonight!!
+                WOOOO</q-item-label
+              >
               <q-item-label>
                 <div class="row">
                   <q-btn
@@ -26,7 +29,7 @@
                     disable
                   >
                   </q-btn>
-                  <q-item-label class="q-mt-sm" caption>(1)</q-item-label>
+                  <q-item-label class="q-mt-sm" caption>(3)</q-item-label>
                 </div>
               </q-item-label>
             </div>
@@ -52,22 +55,6 @@
               </q-btn>
             </div>
           </div>
-          <!-- <q-item-label caption top>2m ago</q-item-label>
-          <q-item-label>the music is AMAZING tonite xP</q-item-label>
-          <q-item-label>
-            <div class="row">
-              <q-btn
-                flat
-                round
-                size="sm"
-                icon="chat_bubble_outline"
-                style="margin-left: -6px"
-                disable
-              >
-              </q-btn>
-              <q-item-label class="q-mt-sm" caption>(1)</q-item-label>
-            </div>
-          </q-item-label> -->
         </q-item-section>
       </q-item>
       <q-separator color="black" size="1.3px" />
@@ -83,31 +70,6 @@
           <q-item-label>
             <div></div>
           </q-item-label>
-        </q-item-section>
-      </q-item>
-
-      <q-item class="bg-accent">
-        <q-item-section>
-          <div class="row">
-            <div class="col-11" style="height: 50px">
-              <q-input
-                borderless
-                v-model="pop"
-                placeholder="Add a comment"
-                autogrow
-              />
-            </div>
-            <div class="col-1 q-mt-xs">
-              <q-btn
-                size="12px"
-                round
-                color="primary text-black"
-                class="q-mt-sm q-ml-xs"
-                icon="send"
-              >
-              </q-btn>
-            </div>
-          </div>
         </q-item-section>
       </q-item>
     </q-list>

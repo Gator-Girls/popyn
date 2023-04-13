@@ -1,13 +1,22 @@
 <template>
-  <q-btn
-    round
-    color="primary text-black"
-    class="q-mt-md q-ml-sm"
-    to="/Profile"
-    icon="arrow_back"
-  >
-  </q-btn>
   <q-page>
+    <div class="row">
+      <div class="col-1 q-mt-xs">
+        <q-btn
+          round
+          color="primary text-black"
+          class="q-mt-md q-ml-sm"
+          to="/Profile"
+          icon="arrow_back"
+        >
+        </q-btn>
+      </div>
+      <div class="col-11 q-mt-lg q-pl-lg">
+        <div style="height: 25px; font-size: 20px; font-weight: 500">
+          My Comments
+        </div>
+      </div>
+    </div>
     <div bordered separator class="column items-center">
       <q-list bordered separator style="width: 400px">
         <q-item

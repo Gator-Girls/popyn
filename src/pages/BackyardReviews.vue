@@ -40,24 +40,49 @@
           class="review q-py-md bg-secondary"
         >
           <q-item-section style="width: 330px">
-            <q-item-label caption top>{{ review.time }}</q-item-label>
-            <q-item-label>{{ review.content }}</q-item-label>
-            <q-item-label>
-              <div class="row">
+            <div class="row">
+              <div class="col-11 q-mt-xs">
+                <q-item-label caption top>{{ review.time }}</q-item-label>
+                <q-item-label>{{ review.content }}</q-item-label>
+                <q-item-label>
+                  <div class="row">
+                    <q-btn
+                      flat
+                      round
+                      size="sm"
+                      icon="chat_bubble_outline"
+                      style="margin-left: -6px"
+                      to="/BackyardComments"
+                    >
+                    </q-btn>
+                    <q-item-label class="q-mt-sm" caption>{{
+                      review.numComments
+                    }}</q-item-label>
+                  </div>
+                </q-item-label>
+              </div>
+              <div class="col-1">
                 <q-btn
                   flat
                   round
                   size="sm"
-                  icon="chat_bubble_outline"
+                  icon="keyboard_arrow_up"
                   style="margin-left: -6px"
-                  to="/BackyardComments"
+                  @click="upvote(review)"
                 >
                 </q-btn>
-                <q-item-label class="q-mt-sm" caption>{{
-                  review.numComments
-                }}</q-item-label>
+                <q-item-label class="q-ml-xs">{{ review.value }}</q-item-label>
+                <q-btn
+                  flat
+                  round
+                  size="sm"
+                  icon="keyboard_arrow_down"
+                  style="margin-left: -6px"
+                  @click="downvote(review)"
+                >
+                </q-btn>
               </div>
-            </q-item-label>
+            </div>
           </q-item-section>
         </q-item>
       </q-list>
@@ -84,19 +109,30 @@ export default defineComponent({
           time: "2m ago",
           content: "the music is AMAZING tonite xP",
           numComments: "(1)",
+          value: 0,
         },
         {
           time: "24m ago",
           content: "wow this place is packed!! and drinks are so expensive",
           numComments: "(2)",
+          value: 0,
         },
         {
           time: "34m ago",
           content: "did anyone preband????? im tryna go OUT tonight!! WOOOO",
           numComments: "(0)",
+          value: 0,
         },
       ],
     };
+  },
+  methods: {
+    downvote(review) {
+      review.value -= 1;
+    },
+    upvote(review) {
+      review.value += 1;
+    },
   },
 });
 </script>
