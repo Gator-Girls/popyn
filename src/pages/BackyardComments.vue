@@ -1,6 +1,19 @@
 <template>
+  <q-btn
+    round
+    color="primary text-black"
+    class="q-mt-md q-ml-sm"
+    to="/BackyardReviews"
+    icon="arrow_back"
+  >
+  </q-btn>
   <div bordered separator class="column items-center">
-    <q-item v-for="comment in comments" :key="comment.id" class="bg-secondary">
+    <q-item
+      v-for="comment in comments"
+      :key="comment.id"
+      class="bg-secondary"
+      style="width: 400px"
+    >
       <q-item-section>
         <q-item-label caption top>{{ comment.time }}</q-item-label>
         <q-item-label>{{ comment.content }}</q-item-label>
