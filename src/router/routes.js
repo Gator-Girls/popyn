@@ -58,6 +58,11 @@ const routes = [
         component: () => import("src/pages/BackyardComments.vue"),
         name: "BackyardComments",
       },
+      {
+        path: "/mybackyardcomments",
+        component: () => import("src/pages/MyBackyardComments.vue"),
+        name: "MyBackyardComments",
+      },
     ],
   },
 
