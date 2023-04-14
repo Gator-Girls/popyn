@@ -63,6 +63,11 @@ const routes = [
         component: () => import("src/pages/MyBackyardComments.vue"),
         name: "MyBackyardComments",
       },
+      {
+        path: "/mapcontainer",
+        component: () => import("src/pages/MapContainer.vue"),
+        name: "MapContainer",
+      },
     ],
   },
 

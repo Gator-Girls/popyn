@@ -30,7 +30,7 @@
     <q-footer bordered class="bg-primary text-black">
       <q-tabs>
         <q-route-tab to="/home" label="Home" icon="home" />
-        <q-route-tab to="/search" label="Search" icon="search" />
+        <q-route-tab to="/mapcontainer" label="Map" icon="map" />
         <q-route-tab to="/profile" label="Profile" icon="person" />
       </q-tabs>
     </q-footer>
