@@ -3,7 +3,7 @@
     round
     color="primary text-black"
     class="q-mt-md q-ml-sm"
-    to="/BackyardReviews"
+    to="/dtfreviews"
     icon="arrow_back"
   >
   </q-btn>
@@ -13,8 +13,8 @@
         <q-item-section>
           <div class="row">
             <div class="col-11 q-mt-xs">
-              <q-item-label caption top>2m ago</q-item-label>
-              <q-item-label>the music is AMAZING tonite xP</q-item-label>
+              <q-item-label caption top>24m ago</q-item-label>
+              <q-item-label>how long is the line???</q-item-label>
               <q-item-label>
                 <div class="row">
                   <q-btn
@@ -26,7 +26,9 @@
                     disable
                   >
                   </q-btn>
-                  <q-item-label class="q-mt-sm" caption>(1)</q-item-label>
+                  <q-item-label class="q-mt-sm" caption>{{
+                    getCommentsSize
+                  }}</q-item-label>
                 </div>
               </q-item-label>
             </div>
@@ -40,7 +42,7 @@
                 disable
               >
               </q-btn>
-              <q-item-label class="q-ml-xs">2</q-item-label>
+              <q-item-label class="q-ml-xs">0</q-item-label>
               <q-btn
                 flat
                 round
@@ -52,22 +54,6 @@
               </q-btn>
             </div>
           </div>
-          <!-- <q-item-label caption top>2m ago</q-item-label>
-          <q-item-label>the music is AMAZING tonite xP</q-item-label>
-          <q-item-label>
-            <div class="row">
-              <q-btn
-                flat
-                round
-                size="sm"
-                icon="chat_bubble_outline"
-                style="margin-left: -6px"
-                disable
-              >
-              </q-btn>
-              <q-item-label class="q-mt-sm" caption>(1)</q-item-label>
-            </div>
-          </q-item-label> -->
         </q-item-section>
       </q-item>
       <q-separator color="black" size="1.3px" />
@@ -91,14 +77,15 @@
           <div class="row">
             <div class="col-11" style="height: 50px">
               <q-input
+                v-model="newCommentContent"
                 borderless
-                v-model="pop"
                 placeholder="Add a comment"
                 autogrow
               />
             </div>
             <div class="col-1 q-mt-xs">
               <q-btn
+                @click="addNewComment"
                 size="12px"
                 round
                 color="primary text-black"
@@ -117,24 +104,41 @@
 <script>
 import { defineComponent } from "vue";
 export default defineComponent({
-  name: "PageBackyardComments",
+  name: "PageDTFComments",
   data() {
     return {
+      newCommentContent: "",
       comments: [
         {
-          time: "20m ago",
-          content: "The lines too longgg",
-        },
-        {
-          time: "15m ago",
-          content: "Don't Go",
+          time: "12m ago",
+          content: "so long",
         },
         {
           time: "13m ago",
-          content: "The music is trash",
+          content: "i've been waiting for 15 min",
+        },
+        {
+          time: "15m ago",
+          content: "fr",
         },
       ],
     };
+  },
+  methods: {
+    addNewComment() {
+      let newComment = {
+        content: this.newCommentContent,
+        time: "0m ago",
+      };
+      this.comments.push(newComment);
+      this.newCommentContent = "";
+      console.log(this.newCommentContent);
+    },
+  },
+  computed: {
+    getCommentsSize() {
+      return this.comments.length;
+    },
   },
 });
 </script>

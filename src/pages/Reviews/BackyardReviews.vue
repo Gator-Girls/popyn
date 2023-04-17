@@ -52,7 +52,7 @@
                       size="sm"
                       icon="chat_bubble_outline"
                       style="margin-left: -6px"
-                      to="/BackyardComments"
+                      :to="review.pathTo"
                     >
                     </q-btn>
                     <q-item-label class="q-mt-sm" caption>{{
@@ -92,23 +92,35 @@
       class="absolute-bottom-right q-mb-sm q-mr-sm"
       color="primary"
       icon="add"
-      to="/CreatePop"
+      @click="showModal"
     ></q-btn>
+    <Modal
+      :visible="showModalFlag"
+      @save="saveModalInput"
+      @close="closeModal"
+    ></Modal>
   </q-page>
 </template>
 
 <script>
 import { defineComponent } from "vue";
+import Modal from "./ModalBackyard.vue";
 
 export default defineComponent({
   name: "PageBackyardReviews",
+  components: {
+    Modal,
+  },
   data() {
     return {
+      showModalFlag: false,
+      newReviewConent: "",
       reviews: [
         {
           time: "2m ago",
           content: "the music is AMAZING tonite xP",
           numComments: "(1)",
+          pathTo: "/BackyardComments",
           value: 0,
         },
         {
@@ -123,6 +135,18 @@ export default defineComponent({
           numComments: "(0)",
           value: 0,
         },
+        {
+          time: "52m ago",
+          content: "what's up???",
+          numComments: "(0)",
+          value: 0,
+        },
+        {
+          time: "1hr ago",
+          content: "heard it'll be fun tonight!!",
+          numComments: "(0)",
+          value: 0,
+        },
       ],
     };
   },
@@ -132,6 +156,26 @@ export default defineComponent({
     },
     upvote(review) {
       review.value += 1;
+    },
+    showModal() {
+      this.showModalFlag = true;
+      console.log("is visible", this.showModalFlag);
+    },
+    closeModal() {
+      this.showModalFlag = false;
+      console.log("is visible", this.showModalFlag);
+    },
+    saveModalInput(inputValue) {
+      this.newReviewContent = inputValue;
+      const newReview = {
+        time: "0m ago",
+        content: this.newReviewContent,
+        numComments: "(0)",
+        value: 0,
+      };
+      this.reviews.push(newReview);
+      this.newReviewContent = "";
+      this.showModalFlag = false;
     },
   },
 });
