@@ -2,56 +2,38 @@
   <q-layout view="lHr lpR fFf">
     <q-header bordered class="bg-primary text-black">
       <q-toolbar>
-        <q-btn dense flat round icon="menu" @click="left = !left" />
-
+        <!-- <q-btn dense flat round icon="menu" @click="left = !left" /> -->
+        <img
+          alt="Popyn logo"
+          src="~assets/Popyn_-logos_transparent.ico"
+          style="width: 88px; height: 88px"
+        />
         <q-toolbar-title class="text-weight-bold">
-          <span class="gt-sm">{{ $route.name }}</span>
-          <q-icon
+          <!-- {{ $route.name }} IF WE WANT CURRENT PAGE NAME IN HEADER-->
+          <span>{{ "What's Popyn!" }}</span>
+          <!-- <q-icon
             class="header-icon q-pa-md lt-md"
             name="fas fa-dove"
             size="sm"
             color="primary"
-          />
+          /> -->
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
-
-    <q-drawer v-model="left" side="left" :width="283" bordered show-if-above>
-      <q-icon class="q-pa-md" name="fas fa-dove" size="lg" color="primary" />
-
-      <q-list>
-        <q-item to="/" v-ripple clickable exact>
-          <q-item-section avatar>
-            <q-icon name="home" size="md" />
-          </q-item-section>
-          <q-item-section class="text-h6 text-weight-bold">Home</q-item-section>
-        </q-item>
-
-        <q-item to="/profile" v-ripple clickable exact>
-          <q-item-section avatar>
-            <q-icon name="account_circle" size="md" />
-          </q-item-section>
-          <q-item-section class="text-h6 text-weight-bold"
-            >Profile</q-item-section
-          >
-        </q-item>
-
-        <q-item to="/search" v-ripple clickable exact>
-          <q-item-section avatar>
-            <q-icon name="search" size="md" />
-          </q-item-section>
-          <q-item-section class="text-h6 text-weight-bold"
-            >Search</q-item-section
-          >
-        </q-item>
-      </q-list>
-    </q-drawer>
 
     <q-page-container>
       <keep-alive>
         <router-view />
       </keep-alive>
     </q-page-container>
+
+    <q-footer bordered class="bg-primary text-black">
+      <q-tabs>
+        <q-route-tab to="/home" label="Home" icon="home" />
+        <q-route-tab to="/mapcontainer" label="Map" icon="map" />
+        <q-route-tab to="/profile" label="Profile" icon="person" />
+      </q-tabs>
+    </q-footer>
   </q-layout>
 </template>
 
@@ -60,6 +42,7 @@ export default {
   data() {
     return {
       left: false,
+      right: false,
     };
   },
 };
