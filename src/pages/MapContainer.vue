@@ -5,7 +5,6 @@
 </template>
 
 <script>
-// import { db } from "./main";
 export default {
   name: "MapContainer",
   data() {
@@ -50,6 +49,7 @@ export default {
       ],
     };
   },
+
   mounted() {
     // Load the Google Maps API
     const script = document.createElement("script");
