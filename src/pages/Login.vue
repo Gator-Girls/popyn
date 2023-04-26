@@ -22,7 +22,7 @@
         color="primary"
         label="Create an account"
         size="xs"
-        to="/Signup"
+        to="/SignupForm"
       />
     </div>
 

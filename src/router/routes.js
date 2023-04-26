@@ -49,9 +49,9 @@ const routes = [
         name: "Login",
       },
       {
-        path: "/signup",
-        component: () => import("src/pages/Signup.vue"),
-        name: "Signup",
+        path: "/signupform",
+        component: () => import("src/pages/SignupForm.vue"),
+        name: "SignupForm",
       },
       {
         path: "/mypops",
