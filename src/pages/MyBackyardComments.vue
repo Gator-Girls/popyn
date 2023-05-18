@@ -80,6 +80,12 @@
 import { defineComponent } from "vue";
 export default defineComponent({
   name: "PageBackyardComments",
+  props: {
+    reviewId: {
+      type: [Number, String],
+      required: true,
+    },
+  },
   data() {
     return {
       comments: [

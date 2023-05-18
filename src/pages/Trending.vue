@@ -7,12 +7,6 @@
       </q-tabs>
     </div>
 
-    <!-- <img
-      alt="Popyn logo"
-      src="~assets/Popyn_-logos_transparent.ico"
-      style="width: 300px; height: 300px"
-    /> -->
-
     <div class="column items-center">
       <q-item v-for="barP in bars" :key="barP.id" class="barP q-py-xs">
         <div class="row">
@@ -49,6 +43,7 @@
 
 <script>
 import { defineComponent } from "vue";
+import db from ".././boot/firebase";
 
 export default defineComponent({
   name: "PageTrending",
@@ -56,6 +51,7 @@ export default defineComponent({
     return {
       bars: [
         {
+          place_id: "ChIJeWQGOY2j6IgRolwm3higq5w",
           locName: "The Backyard at Boca Fiesta",
           ranking: "1. ",
           distanceLine: "2.7 mi • Bar • $$",
@@ -65,6 +61,7 @@ export default defineComponent({
           img: require("../assets/backyard.ico"),
         },
         {
+          place_id: "ChIJoQC7ieGj6IgRhZVl0mVRx5c",
           locName: "Downtown Fats",
           ranking: "2. ",
           distanceLine: "2.4 mi • Bar • $",
@@ -74,6 +71,7 @@ export default defineComponent({
           img: require("../assets/dtf.ico"),
         },
         {
+          place_id: "ChIJj2W1eIKj6IgReGadK5Wxt58",
           locName: "Fat Daddy's",
           ranking: "3. ",
           distanceLine: "3.1 mi • Bar • $",
@@ -83,6 +81,7 @@ export default defineComponent({
           img: require("../assets/fatdaddy.ico"),
         },
         {
+          place_id: "ChIJfzM7wIyj6IgRBdNiPqiE4g0",
           locName: "Arcade Bar",
           ranking: "4. ",
           distanceLine: "2.8 mi • Bar • $",
